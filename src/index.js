@@ -20,7 +20,11 @@ app.get('/projects', (request, response) => {
 app.post('/projects', (request, response) => {
     const { title, owner } = request.body
 
-    const project = { id: uuid(), title, owner }
+    const project = { 
+        id: uuid(), 
+        title, 
+        owner 
+    }
     projects.push(project);
 
     return response.json(project)
@@ -33,7 +37,7 @@ app.put('/projects/:id', (request, response) => {
     const projectIndex = projects.findIndex(project => project.id === id) 
 
     if (projectIndex < 0){
-        return response.status  (400).json ({error: 'project not found'})
+        return response.status(400).json ({error: 'project not found'})
     }
 
     const project = {
